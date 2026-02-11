@@ -1,0 +1,21 @@
+ideas = {
+    country = {
+        GER_kd_no_capitulation = {
+            allowed = {
+                original_tag = GER
+            }
+
+            picture = GFX_idea_generic_defence
+            removal_cost = -1
+            allowed_civil_war = {
+                always = no
+            }
+
+            modifier = {
+                # Forces Germany's surrender limit to effectively 0%.
+                # Tweak this if your mod setup uses different surrender scaling.
+                surrender_limit = -1.0
+            }
+        }
+    }
+}

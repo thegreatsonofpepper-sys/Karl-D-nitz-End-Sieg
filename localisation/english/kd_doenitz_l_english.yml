@@ -1,0 +1,7 @@
+l_english:
+ kd_doenitz.1.t:0 "The Last Government in Flensburg"
+ kd_doenitz.1.d:0 "Berlin has fallen. With the Reich capital in enemy hands, Karl Dönitz assumes command to continue resistance from the north."
+ kd_doenitz.1.a:0 "Hold every inch of Germany."
+
+ GER_kd_no_capitulation:0 "Total National Redoubt"
+ GER_kd_no_capitulation_desc:0 "With Berlin lost and Dönitz in command, Germany refuses to surrender while any homeland territory remains under our control."
