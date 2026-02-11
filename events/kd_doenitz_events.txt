@@ -1,0 +1,25 @@
+add_namespace = kd_doenitz
+
+country_event = {
+    id = kd_doenitz.1
+    title = kd_doenitz.1.t
+    desc = kd_doenitz.1.d
+    picture = GFX_report_event_german_city_ruins
+    is_triggered_only = yes
+
+    option = {
+        name = kd_doenitz.1.a
+
+        retire_country_leader = yes
+
+        create_country_leader = {
+            name = "Karl Dönitz"
+            picture = "Portrait_Germany_Karl_Donitz.dds"
+            expire = "1965.1.1"
+            ideology = fascism
+        }
+
+        set_country_flag = kd_doenitz_taken_over
+        add_ideas = GER_kd_no_capitulation
+    }
+}
