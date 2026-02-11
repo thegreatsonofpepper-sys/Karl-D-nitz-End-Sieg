@@ -1,0 +1,138 @@
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..39d4e9e7ede1d2b70c838f8947a0cab756114dc6
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,40 @@
++# Karl Dönitz Last-Stand Mod (HOI4)
++
++This mini-mod makes Germany continue fighting after Berlin is lost:
++
++- Once Germany is at war and no longer controls Berlin (state `64`), an event fires.
++- The current country leader is retired.
++- Karl Dönitz is created as the new German leader.
++- Germany gains a permanent spirit that applies `surrender_limit = -1.0`.
++
++That modifier is the core of the "do not capitulate until everything is occupied" behavior.
++
++## What is in this repository
++
++- `common/on_actions/kd_on_actions.txt`  
++  Daily trigger that checks Berlin control and fires the event once.
++- `events/kd_doenitz_events.txt`  
++  Country event that swaps leadership to Dönitz and grants the spirit.
++- `common/ideas/kd_ideas.txt`  
++  Spirit definition with the surrender-limit modifier.
++- `localisation/english/kd_doenitz_l_english.yml`  
++  Event + idea text.
++
++## Install / use
++
++1. Place these files in your mod folder using the same directory structure.
++2. Enable the mod in the HOI4 launcher.
++3. Start as Germany and enter a war.
++4. Lose Berlin control and verify the event fires.
++
++## Tuning notes
++
++- If your modpack changes surrender math, adjust `surrender_limit` in:
++  - `common/ideas/kd_ideas.txt`
++- If your setup uses a different Berlin state id, change the `controls_state` check in:
++  - `common/on_actions/kd_on_actions.txt`
++
++## GitHub page (optional)
++
++You **do not** need GitHub Pages for this mod to work.
++Use GitHub Pages only if you want public documentation/screenshots/changelog pages.
+diff --git a/common/ideas/kd_ideas.txt b/common/ideas/kd_ideas.txt
+new file mode 100644
+index 0000000000000000000000000000000000000000..f82a3967b027781659ecff1f1c6040cad7ad9010
+--- /dev/null
++++ b/common/ideas/kd_ideas.txt
+@@ -0,0 +1,21 @@
++ideas = {
++    country = {
++        GER_kd_no_capitulation = {
++            allowed = {
++                original_tag = GER
++            }
++
++            picture = GFX_idea_generic_defence
++            removal_cost = -1
++            allowed_civil_war = {
++                always = no
++            }
++
++            modifier = {
++                # Forces Germany's surrender limit to effectively 0%.
++                # Tweak this if your mod setup uses different surrender scaling.
++                surrender_limit = -1.0
++            }
++        }
++    }
++}
+diff --git a/common/on_actions/kd_on_actions.txt b/common/on_actions/kd_on_actions.txt
+new file mode 100644
+index 0000000000000000000000000000000000000000..0f302b71c32d071ed9ab2e917fc1f78beef147ee
+--- /dev/null
++++ b/common/on_actions/kd_on_actions.txt
+@@ -0,0 +1,15 @@
++on_actions = {
++    on_daily = {
++        effect = {
++            every_country = {
++                limit = {
++                    tag = GER
++                    has_war = yes
++                    NOT = { controls_state = 64 }
++                    NOT = { has_country_flag = kd_doenitz_taken_over }
++                }
++                country_event = { id = kd_doenitz.1 days = 0 }
++            }
++        }
++    }
++}
+diff --git a/events/kd_doenitz_events.txt b/events/kd_doenitz_events.txt
+new file mode 100644
+index 0000000000000000000000000000000000000000..88abc08e0e8bb145bcd5f8a5ca7e06d64902dcac
+--- /dev/null
++++ b/events/kd_doenitz_events.txt
+@@ -0,0 +1,25 @@
++add_namespace = kd_doenitz
++
++country_event = {
++    id = kd_doenitz.1
++    title = kd_doenitz.1.t
++    desc = kd_doenitz.1.d
++    picture = GFX_report_event_german_city_ruins
++    is_triggered_only = yes
++
++    option = {
++        name = kd_doenitz.1.a
++
++        retire_country_leader = yes
++
++        create_country_leader = {
++            name = "Karl Dönitz"
++            picture = "Portrait_Germany_Karl_Donitz.dds"
++            expire = "1965.1.1"
++            ideology = fascism
++        }
++
++        set_country_flag = kd_doenitz_taken_over
++        add_ideas = GER_kd_no_capitulation
++    }
++}
+diff --git a/localisation/english/kd_doenitz_l_english.yml b/localisation/english/kd_doenitz_l_english.yml
+new file mode 100644
+index 0000000000000000000000000000000000000000..24fc4af8029c6cbd452727b03d6d89f30ce518e3
+--- /dev/null
++++ b/localisation/english/kd_doenitz_l_english.yml
+@@ -0,0 +1,7 @@
++l_english:
++ kd_doenitz.1.t:0 "The Last Government in Flensburg"
++ kd_doenitz.1.d:0 "Berlin has fallen. With the Reich capital in enemy hands, Karl Dönitz assumes command to continue resistance from the north."
++ kd_doenitz.1.a:0 "Hold every inch of Germany."
++
++ GER_kd_no_capitulation:0 "Total National Redoubt"
++ GER_kd_no_capitulation_desc:0 "With Berlin lost and Dönitz in command, Germany refuses to surrender while any homeland territory remains under our control."
