@@ -54,3 +54,16 @@ This generates `dist/Karl_Donitz_Last_Stand.zip` with the correct `mod/` layout.
 - Event and naming text:
   - `mod/Karl_Donitz_Last_Stand/events/kd_doenitz_events.txt`
   - `mod/Karl_Donitz_Last_Stand/localisation/english/kd_doenitz_l_english.yml`
+
+## Troubleshooting
+
+- **Mod does not show in launcher**
+  - Confirm both files are present in your HOI4 `mod/` directory: `Karl_Donitz_Last_Stand.mod` and `Karl_Donitz_Last_Stand/`.
+  - Confirm `.mod` file path line is exactly: `path="mod/Karl_Donitz_Last_Stand"`.
+- **Text appears as localisation keys**
+  - Keep `kd_doenitz_l_english.yml` as UTF-8 with BOM (already included in this repo).
+
+## GitHub Pages (optional)
+
+You do **not** need GitHub Pages for the mod to work.
+Use GitHub Pages only if you want public documentation/screenshots/changelog pages.
