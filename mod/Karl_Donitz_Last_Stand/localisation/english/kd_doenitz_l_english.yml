@@ -1,0 +1,7 @@
+﻿l_english:
+ kd_endsieg.1.t:0 "Defeat Cannot Come so Soon!"
+ kd_endsieg.1.d:0 "Berlin has fallen, but Germany will not yield. A final emergency war posture is declared as the Reich fights on in an Endsieg mindset."
+ kd_endsieg.1.a:0 "Endsieg!"
+
+ GER_kd_endsieg_spirit:0 "Defeat Cannot Come so Soon!"
+ GER_kd_endsieg_spirit_desc:0 "With Berlin lost, Germany hardens its resolve and raises its surrender threshold for a prolonged last stand."

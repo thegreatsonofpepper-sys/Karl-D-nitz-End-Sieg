@@ -1,0 +1,20 @@
+ideas = {
+    country = {
+        GER_kd_endsieg_spirit = {
+            allowed = {
+                original_tag = GER
+            }
+
+            picture = GFX_idea_generic_defence
+            removal_cost = -1
+            allowed_civil_war = {
+                always = no
+            }
+
+            modifier = {
+                # Berlin-loss emergency spirit to boost surrender threshold.
+                surrender_limit = 1.0
+            }
+        }
+    }
+}

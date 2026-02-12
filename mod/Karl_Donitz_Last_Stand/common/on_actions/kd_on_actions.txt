@@ -1,0 +1,15 @@
+on_actions = {
+    on_daily = {
+        effect = {
+            every_country = {
+                limit = {
+                    tag = GER
+                    has_war = yes
+                    NOT = { controls_state = 64 }
+                    NOT = { has_country_flag = kd_endsieg_spirit_applied }
+                }
+                country_event = { id = kd_endsieg.1 days = 0 }
+            }
+        }
+    }
+}

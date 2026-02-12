@@ -1,0 +1,16 @@
+add_namespace = kd_endsieg
+
+country_event = {
+    id = kd_endsieg.1
+    title = kd_endsieg.1.t
+    desc = kd_endsieg.1.d
+    picture = GFX_report_event_german_city_ruins
+    is_triggered_only = yes
+
+    option = {
+        name = kd_endsieg.1.a
+
+        set_country_flag = kd_endsieg_spirit_applied
+        add_ideas = GER_kd_endsieg_spirit
+    }
+}
